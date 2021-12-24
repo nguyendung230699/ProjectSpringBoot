@@ -12,15 +12,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+// Hoan thien cac chuc nang code dua tren service
 public class AppController {
 	@Autowired
 	private ProductService service;
+	
+	// functions show list producr
 	@RequestMapping("/")
 	public String viewHomepage(Model model) {
 		List<Product> listProducts = service.listAll();
 		model.addAttribute("listProducts", listProducts);
 		return "index";
 	}
+	
+	// function create new product
 	@RequestMapping("/new")
 	public String showNewProductForm(Model model) {
 		Product product = new Product();
@@ -29,13 +34,14 @@ public class AppController {
 		return "new_product";
 		
 	}
-	
+	//function save
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveProduct(@ModelAttribute("product") Product product) {
 	    service.save(product);
 	     
 	    return "redirect:/";
 	}
+	// function edit product
 	@RequestMapping("/edit/{id}")
 	public ModelAndView showEditProductPage(@PathVariable(name = "id") int id) {
 	    ModelAndView mav = new ModelAndView("edit_product");
@@ -44,6 +50,7 @@ public class AppController {
 	     
 	    return mav;
 	}
+	//function delete product
 	@RequestMapping("/delete/{id}")
 	public String deleteProduct(@PathVariable(name = "id") int id) {
 	    service.delete(id);

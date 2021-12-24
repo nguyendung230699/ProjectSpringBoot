@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+// tao cac method de appcontroller call
 
 @Service
 public class ProductService {
     @Autowired
  
-    private ProductReponsitory repo;
+    private ProductReponsitory repo; // mapping interface ProductRepon
      
     public List<Product> listAll() {
         return repo.findAll();
