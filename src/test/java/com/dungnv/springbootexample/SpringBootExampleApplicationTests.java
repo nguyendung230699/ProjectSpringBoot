@@ -3,11 +3,13 @@ package com.dungnv.springbootexample;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+
 @SpringBootTest
-class SpringBootExampleApplicationTests {
+public class SpringBootExampleApplicationTests {
 
 	@Test
 	void contextLoads() {
 	}
+
 
 }
